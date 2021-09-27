@@ -1,0 +1,37 @@
+{% extends "layout.html" %}
+{% block title %}
+    Register
+{% endblock %}
+
+{% block main %}
+    <main class="container p-5">
+        <table class="table table-striped">
+            <thead>
+                <th>Symbol</th>
+                <th>Name</th>
+                <th>Shares</th>
+                <th>Price</th>
+                <th>TOTAL</th>
+            </thead>
+
+            <tbody>
+
+                    {% for row in range(length) %}
+                        <tr>
+                            <td>{{ userInfo[row]["symbol"] }}</td>
+                            <td>{{ currentSymbol[row]["name"] }}</td>
+                            <td>{{ userInfo[row]["shares"] }}</td>
+                            <td>${{ currentSymbol[row]["price"] }}</td>
+                            <td>${{ '%0.2f' % (currentSymbol[row]["price"] * userInfo[row]["shares"]) }}</td>
+                        </tr>
+                    {% endfor %}
+                <tr>
+                    <td>CASH</td>
+                     <td colspan="3"></td>
+                    <td>${{ '%0.2f' % userCash }}</td>
+                </tr>
+            </tbody>
+
+        </table>
+    </main>
+{% endblock %}
